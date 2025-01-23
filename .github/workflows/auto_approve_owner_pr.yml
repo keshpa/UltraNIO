@@ -5,20 +5,34 @@ on:
     types:
       - opened
       - reopened
-      - synchronize  # Trigger when the PR is updated
+      - synchronize  # Trigger when a PR is updated
 
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the codebase
-      - name: Checkout code
+      # Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Auto-approve PR if the owner is the author
-      - name: Approve Pull Request
-        if: github.event.pull_request.user.login == 'keshpa'  # Replace with the owner's GitHub username
-        uses: juliangruber/approve-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.AUTO-APPROVER-FOR-OWNER }}
+      # Auto-approve if the PR author is the repository owner
+      - name: Auto-Approve PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.AUTO-APPROVER-FOR-OWNER }}
+        run: |
+          # Extract PR author and repository owner
+          PR_AUTHOR=$(jq -r '.pull_request.user.login' <<< "${{ toJson(github.event) }}")
+          REPO_OWNER=$(jq -r '.repository.owner.login' <<< "${{ toJson(github.event) }}")
+
+          # Check if the PR author matches the repository owner
+          if [ "$PR_AUTHOR" == "$REPO_OWNER" ]; then
+            echo "Approving PR from $PR_AUTHOR..."
+            curl -X POST \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d '{"event": "APPROVE"}'
+          else
+            echo "PR author ($PR_AUTHOR) is not the repository owner ($REPO_OWNER). Skipping approval."
+          fi
