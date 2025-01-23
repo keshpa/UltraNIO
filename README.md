@@ -86,7 +86,7 @@ All UltraNIO eBPF code is licensed under GPL version 2.1 and is fully open-sourc
 
   - UltraNio allow creation of QoS policies to shape traffic based on destination CIDR, protocol, ports, as well as destination IAB category or domain name.
 
-  - UltraNio connection statistics report allows easy L7 aware visualization of all incoming/outgoing traffic.
+  - UltraNio connection statistics report allows easy L7 aware visualization of all incoming/outgoing traffic..
 
 # Kubernetes Integration
 
