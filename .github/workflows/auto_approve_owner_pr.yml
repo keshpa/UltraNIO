@@ -19,6 +19,6 @@ jobs:
       # Auto-approve PR if the owner is the author
       - name: Approve Pull Request
         if: github.event.pull_request.user.login == 'keshpa'  # Replace with the owner's GitHub username
-        uses: hmarr/auto-approve-action@v4
+        uses: juliangruber/approve-pull-request-action@v1
         with:
           github-token: ${{ secrets.AUTO-APPROVER-FOR-OWNER }}
