@@ -1,23 +1,12 @@
-name: Auto-Approve Owner PRs
-on:
-  pull_request:
-    types: [opened, synchronize]
+name: Auto approve
+
+on: pull_request_target
 
 jobs:
-  approve:
+  auto-approve:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    if: github.actor == 'dependabot[bot]'
     steps:
-      - uses: actions/github-script@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          github-script: | 
-            if (github.actor === github.repositoryOwner) {
-              console.log('Pull request is from repository owner, approving...')
-              github.issues.addLabels(github.context.issue.number, ['auto-approved'])
-              github.pullRequests.merge(github.context.issue.number, {
-                merge_method: 'squash'
-              })
-            } else {
-              console.log('Pull request is not from repository owner, skipping approval')
-            }
+      - uses: hmarr/auto-approve-action@v4
