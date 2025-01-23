@@ -7,5 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    if: github.repository_owner == github.actor
     steps:
       - uses: hmarr/auto-approve-action@v4
