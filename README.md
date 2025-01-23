@@ -1,11 +1,14 @@
-# UltraNIO
-UltraNIO is a cutting-edge solution for overlay networking and security, combining unparalleled scalability, performance, and flexibility. With its advanced features and open-source nature, UltraNIO empowers enterprises to deploy secure and highly efficient networking infrastructures tailored for modern containerized and virtualized environments. 
+# What is UltraNIO?
+
+UltraNIO is a cutting-edge overlay networking plane that is fully eBPF-based. Currently focused on networking, UltraNIO has ambitious plans to extend its capabilities to include iSCSI-based storage accelerators for containers and virtual machines (VMs). Purpose-built from the ground up, UltraNIO is designed to support containers and VMs while offering sophisticated features that remain absent in current offerings. Engineered for unparalleled scale and performance (millions of policies and several thousand endpoints), UltraNIO can evaluate policy decisions in a few microseconds regardless of scale. Furthermore, all eBPF code in UltraNIO is GPL-licensed and open source.
+
+What sets UltraNIO apart is its advanced capability to define various security policies, such as microsegmentation and security groups, as well as policy-based service chaining. These policies can be configured based on domain names, IAB (Interactive Advertising Bureau) categories, or traditional CIDRs (Classless Inter-Domain Routing). The virtual switching fabric in UltraNIO is inherently Layer 7 (L7)-aware, enabling real-time reporting of connection and security events with domain/IAB categorization. This empowers organizations to derive meaningful insights and detect abnormal endpoint behavior in real time.
 
 # What is UltraNIO based on ?
 
-UltraNIO leverages eBPF, a revolutionary technology that enables high-performance and programmable networking within the Linux kernel. By allowing custom packet processing at the kernel level, eBPF minimizes latency and maximizes flexibility, making it an ideal foundation for modern, scalable overlay networking solutions.
+UltraNIO leverages eBPF, a revolutionary technology that enables high-performance and programmable networking within the Linux kernel. By allowing custom packet processing at the kernel level, eBPF minimizes latency and maximizes flexibility, making it an ideal foundation for modern, scalable overlay networking solutions. eBPFs are immune to Linux kernel versions/upgrades thereby simplifying the kernel compatibility matrix.
 
-UltraNIO is an eBPF-based overlay networking plane designed from the ground up to support containers and virtual machines (VMs). While currently focused on networking, future plans include developing iSCSI-based storage accelerators for containers and VMs. UltraNIO incorporates advanced features that are absent in many commercial solutions and is built for ultra-scale and performance, outpacing leading commercial overlay networking systems. All UltraNIO eBPF code is licensed under GPL version 2.1 and is fully open-source.
+All UltraNIO eBPF code is licensed under GPL version 2.1 and is fully open-source.
 
 # Features and Capabilities
 
@@ -33,11 +36,9 @@ UltraNIO is an eBPF-based overlay networking plane designed from the ground up t
 
   - Supports policy-based routing and policy-based NAT or non-NAT’ed egress.
 
-  - Distributed connection state across Kubernetes hosts ensures resilience against host failures.
+  - Distributed NAT/NAT;ess connection state across Kubernetes hosts ensures resilience against host failures.
 
   - Egress traffic supports Equal-Cost Multi-Path (ECMP) routing by default, with no single point of failure.
-
-  - Ingress traffic also natively supports ECMP.
 
 - Service Chaining:
 
@@ -71,13 +72,21 @@ UltraNIO is an eBPF-based overlay networking plane designed from the ground up t
 
 - Granular Reporting:
 
-  - Real-time reporting of allowed or denied connections, including the policy responsible for each decision.
+  - Real-time security reporting of allowed or denied connections, including the policy responsible for each decision, on a per end-point basis
 
-  - Provides detailed traffic statistics per endpoint to detect anomalies and threats.
+  - Provides detailed network connection statistics per endpoint to detect anomalies and threats.
+
+    - Report provied details information about URL/IAB category of domain visited, bytes ingressed/egressed, time stamps, and real-time state of connection.
 
 - L7 Awareness:
 
-  - Reports include FQDN or IAB category details when applicable.
+  - Reports include FQDN or IAB category details wherever applicable.
+
+- QoS support
+
+  - UltraNio allow creation of QoS policies to shape traffic based on destination CIDR, protocol, ports, as well as destination IAB category or domain name.
+
+  - UltraNio connection statistics report allows easy L7 aware visualization of all incoming/outgoing traffic.
 
 # Kubernetes Integration
 
