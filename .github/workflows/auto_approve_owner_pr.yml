@@ -1,0 +1,24 @@
+name: Auto-Approve Owner PR
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize  # Trigger when the PR is updated
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the codebase
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Auto-approve PR if the owner is the author
+      - name: Approve Pull Request
+        if: github.event.pull_request.user.login == 'keshpa'  # Replace with the owner's GitHub username
+        uses: peter-evans/approve-pull-request@v5
+        with:
+          token: ${{ secrets.AUTO-APPROVER-FOR-OWNER }}
