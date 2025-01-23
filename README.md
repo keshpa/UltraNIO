@@ -94,7 +94,7 @@ All UltraNIO eBPF code is licensed under GPL version 2.1 and is fully open-sourc
 
   - By acting as a CNI provider, UltraNIO seamlessly integrates with Kubernetes to manage networking for containerized workloads. This enables consistent and automated deployment of overlay networking across clusters, enhancing operational efficiency. UltraNIO simplifies networking management while delivering advanced capabilities such as policy-based routing, security, and scalability, tailored to Kubernetes environments. Users benefit from streamlined configuration and centralized control, ensuring robust and efficient networking for all Kubernetes workloads.
 
-  - Currently supports classic Kubernetes deployments but not MicroK8s, Kind, or similar setups.
+  - Currently supports classic Kubernetes deployments but not MicroK8s, Kind, or similar setups
 
 # Summary
 
