@@ -96,6 +96,8 @@ All UltraNIO eBPF code is licensed under GPL version 2.1 and is fully open-sourc
 
   - Currently supports classic Kubernetes deployments but not MicroK8s, Kind, or similar setups.
 
+  - To download and install the Ultra CNI, simply download this bootstrap CNI installer and run it: [_wget https://github.com/keshpa/UltraNIO/blob/main/ultra-bootstrap_](https://github.com/keshpa/UltraNIO/blob/main/ultra-bootstrap)
+
 # Summary
 
 UltraNIO is a cutting-edge solution for overlay networking and security, combining unparalleled scalability, performance, and flexibility. With its advanced features and open-source nature, UltraNIO empowers enterprises to deploy secure and highly efficient networking infrastructures tailored for modern containerized and virtualized environments.
