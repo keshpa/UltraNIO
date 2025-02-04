@@ -1,8 +1,12 @@
 # What is UltraNIO?
 
-UltraNIO is a cutting-edge overlay networking plane that is fully eBPF-based. Currently focused on networking, UltraNIO has ambitious plans to extend its capabilities to include iSCSI-based storage accelerators for containers and virtual machines (VMs). Purpose-built from the ground up, UltraNIO is designed to support containers and VMs while offering sophisticated features that remain absent in current offerings. Engineered for unparalleled scale and performance (millions of policies and several thousand endpoints), UltraNIO can evaluate policy decisions in a few microseconds regardless of scale. Furthermore, all eBPF code in UltraNIO is GPL-licensed and open source.
+UltraNIO is a cutting-edge, eBPF-based overlay networking solution designed specifically for Kubernetes environments. As a Container Network Interface (CNI) solution, similar to Calico, UltraNIO offers advanced, high-performance networking capabilities with a strong focus on security and policy management, making it ideal for small-scale private data centers.
 
-What sets UltraNIO apart is its advanced capability to define various security policies, such as microsegmentation and security groups, as well as policy-based service chaining. These policies can be configured based on domain names, IAB (Interactive Advertising Bureau) categories, or traditional CIDRs (Classless Inter-Domain Routing). The virtual switching fabric in UltraNIO is inherently Layer 7 (L7)-aware, enabling real-time reporting of connection and security events with domain/IAB categorization. This empowers organizations to derive meaningful insights and detect abnormal endpoint behavior in real time.
+What truly sets UltraNIO apart is its powerful ability to define and enforce granular security policies, including microsegmentation, security groups, and policy-based service chaining. These policies can be configured based on domain names, IAB (Interactive Advertising Bureau) categories, or traditional CIDRs (Classless Inter-Domain Routing), providing flexible and robust security options.
+
+UltraNIO’s virtual switching fabric is inherently Layer 7 (L7)-aware, which allows it to provide detailed, real-time visibility into connection and security events. With domain and IAB categorization, it offers valuable insights into network traffic, enabling organizations to monitor and detect abnormal endpoint behaviors in real time. This level of observability and control not only enhances security but also empowers teams to take proactive measures to safeguard the network.
+
+By leveraging eBPF technology, UltraNIO delivers high-performance networking without compromising on security or flexibility, making it an ideal choice for modern Kubernetes-based workloads in private data centers.
 
 # What is UltraNIO based on ?
 
